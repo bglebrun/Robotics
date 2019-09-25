@@ -20,7 +20,6 @@ y1 = []
 
 for i in x:
     g, h = twolinkik(i, 25-i)
-    print(i, 25-i, g, h)
     x1.append(g)
     y1.append(h)
 
