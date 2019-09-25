@@ -63,7 +63,7 @@
 	}
 	{\begin{center}
 	\LARGE\bf
-	L\textsc{aboratory} R\textsc{eport}
+	H\textsc{omework} R\textsc{eport}
 	\end{center}}
 	% To, From, Subject Block
 	\begin{description}

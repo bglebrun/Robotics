@@ -63,13 +63,31 @@ Assume that you have a two link manipulator with $a_1=15cm$ and $a_2=15cm$ and t
 the origin of the coordinate system. Write a Python program to take the list of workspace points and plug them into the
 inverse kinematics formulas for the two link manipulator. Plot these points on a graph where $\theta_1$ is the horizontal
 axis and $\theta_2$ is the vertical axis. You will have to adjust some aspects to get a good looking plot.
-(Scale factors etc.) Test your code on the workspace line (a) $x+y=25, x,y>0$ and (b) $x=10cos(t)+15, y=10sin(t)$ for $0≤t≤\pi$.
+(Scale factors etc.) Test your code on the workspace line (a) $x+y=25, x,y>0$ and (b) $x=10cos(t)+15, y=10sin(t)$ for $0 \leq t \leq\pi$.
 The point here is to see what the configuration space curve looks like.
 
 \subsection*{Solution approach and algorithm description.}
-For this problem, we can use the inverse kinematic equations 
+For this problem, we can use the inverse kinematic equations: 
 \[
-    D = \frac{x^2+y^2-a$^2_1$-a$^2_2$}{2a_1 a_2}
+    D = \frac{x^2+y^2-a^2_1-a^2_2}{2a_1 a_2}
 \]
+
+\[
+    \theta_1 = \tan^{-1}(\frac{y}{x})-\tan^{-1}(\frac{a_2 \sin(\theta_2)}{a_1+a_2 \cos(\theta_2)})
+\]
+
+\[
+    \theta_2 = \tan^{-1}(\frac{\sqrt(1-D^2)}{D})
+\]
+
+And with python code, found the equation for $x+y=25$ in terms of $y$, therefore $y=25-x$ for part A of this question.
+These equations are found in section 2.3 of the Roboscience course book, along with some sample code in Python.
+We then used the matplotlib library for creating plots to view in a separate opening window.
+
+\newpage
+\subsection*{Code}
+\begin{tiny}
+\lstinputlisting{../10a.py}
+\end{tiny}
 
 \end{document}
