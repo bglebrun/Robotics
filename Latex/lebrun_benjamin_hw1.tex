@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Memo
+% LaTeX Template
+% Version 1.0 (30/12/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Rob Oakes (http://www.oak-tree.us) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper,11pt]{texMemo} % Set the paper size (letterpaper, a4paper, etc) and font size (10pt, 11pt or 12pt)
+
+\usepackage{parskip} % Adds spacing between paragraphs
+\usepackage[colorlinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\hypersetup{citecolor=DeepPink4}
+\hypersetup{linkcolor=red}
+\hypersetup{urlcolor=blue}
+\usepackage{cleveref}
+\setlength{\parindent}{15pt} % Indent paragraphs
+
+%----------------------------------------------------------------------------------------
+%	MEMO INFORMATION
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+%	MEMO INFORMATION
+%----------------------------------------------------------------------------------------
+
+\memoto{Dr.Jeff McGough} % Recipient(s)
+
+\memofrom{Benjamin Lebrun} % Sender(s)
+
+\memosubject{Homework 1} % Memo subject
+
+\memodate{\today} % Date, set to \today for automatically printing todays date
+
+%\logo{\includegraphics[width=0.1\textwidth]{logo.png}} % Institution logo at the top right of the memo, comment out this line for no logo
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+
+\maketitle % Print the memo header information
+
+%----------------------------------------------------------------------------------------
+%	MEMO CONTENT
+%----------------------------------------------------------------------------------------
+
+\section*{Problem 2.10}
+\subsection*{Problem statement}
+Assume that you have a two link manipulator with $a_1=15cm$ and $a_2=15cm$ and that the base of the manipulator is at
+the origin of the coordinate system. Write a Python program to take the list of workspace points and plug them into the
+inverse kinematics formulas for the two link manipulator. Plot these points on a graph where $\theta_1$ is the horizontal
+axis and $\theta_2$ is the vertical axis. You will have to adjust some aspects to get a good looking plot.
+(Scale factors etc.) Test your code on the workspace line (a) $x+y=25, x,y>0$ and (b) $x=10cos(t)+15, y=10sin(t)$ for $0≤t≤\pi$.
+The point here is to see what the configuration space curve looks like.
+
+\subsection*{Solution approach and algorithm description.}
+For this problem, we can use the inverse kinematic equations 
+\[
+    D = \frac{x^2+y^2-a$^2_1$-a$^2_2$}{2a_1 a_2}
+\]
+
+\end{document}
