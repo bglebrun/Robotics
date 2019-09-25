@@ -82,12 +82,14 @@ for i in range(0, max(len(sqtx), len(sqty))):
     sqrx.append(l)
     sqry.append(m)
 
-
+plt.title("11, using 10a data")
 plt.plot(x1, y1)
 plt.show()
 
+plt.title("11, using 10b data")
 plt.plot(x2, y2)
 plt.show()
 
+plt.title("11, using square inputs")
 plt.plot(sqrx, sqry)
 plt.show()
