@@ -22,7 +22,6 @@ for i in t:
     x = 10*mt.cos(i)+15
     y = 10*mt.sin(i)
     g, h = twolinkik(x, y)
-    print(x, y, g, h)
     x1.append(g)
     y1.append(h)
 
