@@ -23,12 +23,19 @@ def inverse_k_two_link(x, y):
 x = np.arange(0.1, 25, 0.1)
 t = np.arange(0, mt.pi, 0.1)
 
+# From square problem
+sqx = [5,5,20,20,5]
+sqy = [0,15,15,0,0]
+
 # Theta values for our solutions
 xt1 = []
 yt1 = []
 
 xt2 = []
 yt2 = []
+
+sqtx = []
+sqty = []
 
 # Find theta values for x + y = 25
 for i in x:
@@ -44,11 +51,21 @@ for i in t:
     xt2.append(g)
     yt2.append(h)
 
+for i in range(0, len(sqx)):
+    l, m = inverse_k_two_link(sqx[i], sqy[i])
+    sqtx.append(l)
+    sqty.append(m)
+
+
+# Results
 x1 = []
 y1 = []
 
 x2 = []
 y2 = []
+
+sqrx = []
+sqry = []
 
 for i in range(0, max(len(xt1), len(yt1))):
     g, h = forward_k_two_link(xt1[i], yt1[i])
@@ -60,8 +77,17 @@ for i in range(0, max(len(xt2), len(yt2))):
     x2.append(j)
     y2.append(k)
 
+for i in range(0, max(len(sqtx), len(sqty))):
+    l, m = forward_k_two_link(sqtx[i], sqty[i])
+    sqrx.append(l)
+    sqry.append(m)
+
+
 plt.plot(x1, y1)
 plt.show()
 
 plt.plot(x2, y2)
+plt.show()
+
+plt.plot(sqrx, sqry)
 plt.show()
