@@ -163,7 +163,7 @@ and the bottom is the line segment along $y=8$. Traverse the figure starting at 
 \subsection*{Solution approach and algorithm description.}
 Numpy linspace attempts to create as linear an array as possible over a set of points. This then allows us to simply define 
 an equation where python will interpret the inputs/outputs of this equation as a vector of these points which can then be used
-to plot this desired figure. This was done first by solving for $y$ in our given equation, then using inputs of $x$ across the
+to plot this desired figure. This was done first by solving for $y$ in our given equation as $y=\sqrt(25-(x-10)^2)+8$, then using inputs of $x$ across the
 range $5 \leq x < 15 $ where the half circle and the segment of $y=8$ meet.
 
 \subsection*{Code 18}
