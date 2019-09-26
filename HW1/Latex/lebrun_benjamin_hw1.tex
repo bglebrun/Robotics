@@ -157,24 +157,24 @@ and the bottom is the line segment along $y=8$. Traverse the figure starting at 
 
 \begin{figure}[h]
 \centering
-\includegraphics{img/fig237.png}
+\includegraphics[scale=0.6]{img/fig237.png}
 \end{figure}
 
 \subsection*{Solution approach and algorithm description.}
 Numpy linspace attempts to create as linear an array as possible over a set of points. This then allows us to simply define 
 an equation where python will interpret the inputs/outputs of this equation as a vector of these points which can then be used
 to plot this desired figure. This was done first by solving for $y$ in our given equation as $y=\sqrt(25-(x-10)^2)+8$, then using inputs of $x$ across the
-range $5 \leq x < 15 $ where the half circle and the segment of $y=8$ meet.
+valid range $5 \leq x < 15 $ where the half circle and the segment of $y=8$ meet.
 
 \subsection*{Code 18}
 \begin{tiny}
 \lstinputlisting{../18.py}
 \end{tiny}
 
-\begin{figure}[ht]
+\begin{figure}[hb]
 \caption{Graphed run of 18}
 \centering
-\includegraphics[scale=0.7]{img/18.png}
+\includegraphics[scale=0.5]{img/18.png}
 \end{figure}
 
 \newpage
@@ -200,7 +200,30 @@ for motion in global reference frame.
 \[\dot{\theta} = \frac{r}{2L} (\dot{\phi_1}-\dot{\phi_2})\]
 
 Finding an exact answer to the final positions of the wheels/robot requires solving
-these differentials with respect to $t$. 
+these differentials with respect to $t$. To do this, we integrate the equations to find 
+our functions in term of $x(t)$ and $y(t)$.
+
+\[\theta(t) = (r/2L)(\omega_1 - \omega_2)t + \theta_0\]
+
+\[x(t) = \frac{L(\omega_1 + \omega_2)}{(\omega_1 - \omega_2)} \left[\sin((r/2L)(\omega_1 - \omega_2)t + \theta_0) - \sin(\theta_0)\right] + x(0)\]
+
+\[y(t) = -\frac{L(\omega_1 + \omega_2)}{(\omega_1 - \omega_2)} \left[\cos((r/2L)(\omega_1 - \omega_2)t + \theta_0) - \cos(\theta_0)\right]+ y(0)\]
+
+This of course, presents a problem where if $\omega_1 = \omega_2$ where mathematically the solution is invalid due to
+a divide by zero error. In this case, the Roboscience book tells us that in this special case, $\frac{d\theta}{dt} = 0$.
+
+Because of this, our first set of parameters $t=0$ to $t=5$: $\omega_1=2$, $\omega_2=2$; this special case applies, and our answer becomes 
+$\frac{d\theta}{dt} = \frac{dx}{dt} = \frac{dy}{dt} = 0$, and therefore $x=0$ and $y=0$.
+
+Because for this problem we are differentiating by $t$, for these equations it's prudent to consider 
+that the last two parameters do not start at $t=0$. Therefore to account for our equations considering
+a lower bound of $t=0$, we need to take our two values of $t$, use each in the corresponding equations,
+and subtract the $n_1-n_2$ values.
+
+Doing this, we yield for $t=5$ to $t=6$: $\omega_1=3$, $\omega_2=4$, as having a final position of 
+$x=17.43$ and $y=10.64$.
+
+For $t=6$ to $t=10$: $\omega_1=1$, $\omega_2=2$, we find a final position of $x=29.89$ and $y=189.66$.
 
 
 \end{document}
