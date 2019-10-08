@@ -1,7 +1,7 @@
 import zmq
 
 context = zmq.Context()
-print("Connecting to hello world server...")
+print("Connecting to the chat server...")
 socket = context.socket(zmq.REQ)
 socket.connect("tcp://localhost:5555")
 
@@ -13,7 +13,7 @@ user_name = input('Welcome to the chat client, enter name: ')
 
 socket.send_string('New user {} has entered the channel'.format(user_name))
 
-message_name = '<{}>'.format(user_name)
+message_name = '{}'.format(user_name)
 while True:
     message_string = input('Channel: ')
 
