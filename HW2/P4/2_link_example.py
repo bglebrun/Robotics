@@ -17,8 +17,7 @@ a1 = 15.0
 a2 = 10.0
 d = (x*x + y*y - a1*a1 - a2*a2)/(2*a1*a2)
 t2 = np.arctan2(-np.sqrt(1.0-d*d),d)
-t1 = np.arctan2(y,x) - np.arctan2(a2*np.sin(t2),a1
-                +a2*np.cos(t2))
+t1 = np.arctan2(y,x) - np.arctan2(a2*np.sin(t2),a1+a2*np.cos(t2))
 xsim1 = a1*np.cos(t1)
 ysim1 = a1*np.sin(t1)
 xsim = a2*np.cos(t1+t2) + xsim1
