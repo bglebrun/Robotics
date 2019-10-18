@@ -201,7 +201,26 @@ in a graphic (plot the data and the ellipse). Hint:
 For these graphs, we used the code included in section 3.1 of the text to create the relevant
 datapoints for a differential drive robot. The points were then given a variance of error and the 
 error added to the path of the robot to create a rought sketch of simulation. Then using the generation 
-code for path points and error, a simulation file was created. This file can be viewed at 
+code for path points and error, a simulation file was created. This file can be viewed at \href{https://pastebin.com/f6VpHfQk}{this pastebin},
+due to the size of the file, it won't be included in this report.
+
+The first array we generated from the data is our 'reference' array, which we will use the code 
+included in the text for the location means, covariance matrix and eigenvalues/eigenvectors, and the 
+ellipse they generate. Some simple modifications to the included code in the homework for range and 
+also which vectors are computed for the eigenvectors, and we get a clean image of our Ellipse.
+
+\begin{figure}[ht]
+    \caption{Graphed path and simulaiton noise of Robot}
+    \centering
+    \includegraphics[scale=0.45]{img/P5a.png}
+\end{figure}
+
+\begin{figure}[ht]
+    \caption{Graphed ellipse from eigenvals and eigenvectors of path}
+    \centering
+    \includegraphics[scale=0.45]{img/P5b.png}
+\end{figure}
+
 
 \newpage
 \subsection*{Code for Problem 5}
