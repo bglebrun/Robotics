@@ -72,7 +72,7 @@ for i in range(100):
     yerr = np.random.normal(mu,sigma,len(y))
 
     for i in range(steps):
-        f.write("{},{}".format(x[i]+xerr[i],y[i]+yerr[i]))
+        f.write("{},{}\n".format(x[i]+xerr[i],y[i]+yerr[i]))
 
 f.close()
 
