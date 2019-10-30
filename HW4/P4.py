@@ -1,5 +1,4 @@
 import numpy as np 
-from scipy.signal import argrelmax, argrelmin
 
 steps = 100.0
 
@@ -19,7 +18,14 @@ v2 = np.arange(v2min, v2max, v2space, np.float)
 
 g = (f*b)/(v1+v2)
 
+actual = (f*b)/(0.2+0.3)
+
 print("g: ", g)
 
-print("max: ", argrelmax(g))
-print("min: ", argrelmin(g))
+maxval = np.amax(g)
+minval = np.amin(g)
+
+print("max: ", maxval)
+print("min: ", minval)
+print("max percent error: ", abs((maxval-actual)/actual) * 100 )
+print("min percent error: ", abs((minval-actual)/actual) * 100 )
