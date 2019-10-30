@@ -1,5 +1,5 @@
 import numpy as np 
-from scipy.signal import argrelextrema
+from scipy.signal import argrelmax, argrelmin
 
 steps = 100.0
 
@@ -19,5 +19,7 @@ v2 = np.arange(v2min, v2max, v2space, np.float)
 
 g = (f*b)/(v1+v2)
 
-print("max: ", argrelextrema(g, np.greater))
-print("min: ", argrelextrema(g, np.less))
+print("g: ", g)
+
+print("max: ", argrelmax(g))
+print("min: ", argrelmin(g))
