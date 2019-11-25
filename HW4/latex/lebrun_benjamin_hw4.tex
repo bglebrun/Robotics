@@ -23,6 +23,7 @@
 \usepackage{gensymb}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{siunitx}
 \usepackage{csvsimple}
 \hypersetup{citecolor=DeepPink4}
 \hypersetup{linkcolor=red}
@@ -67,31 +68,39 @@ and the distance from the beacon to the robot, $d$, are given in the table below
 
 \csvautotabular{../P1.csv}
 
-% \begin{tiny}
-%     \begin{lstlisting}
-%     import pylab as plt
-%     plt.plot(x,y,'b.')
-%     plt.show()
-%     \end{lstlisting}
-% \end{tiny}
-
 \subsection*{Solution approach and algorithm description.}
 
+For this problem we know that the given coordinates and distances are just centers of spheres/circles with
+the distance to the beacon as a radius. In the book we are given in Chapter 8, the equations to use for a
+two dimensional plane using beacons. We will adapt this by adding a $z$ term to the equations to account for
+an extra dimension of resolution. The given equations in 2D are
 
 \[
-    2(a_j-a_i)x + 2(b_j-b_i)y  = r_i^2 - r_j^2 - a_i^2 + a_j^2 - b_i^2 + b_j^2
+    (x-a_i)^2 + (y-b_i)^2 = r_i^2 , \quad (x-a_j)^2 + (y-b_j)^2 = r_j^2 .
+\]
+
+For 3 Dimensions
+
+\[
+    (x-a_i)^2 + (y-b_i)^2 +(z-c_i)^2 = r_i^2 , \quad (x-a_j)^2 + (y-b_j)^2 + (z-b_j)^2 = r_j^2
+\]
+
+Expanded, and then rearranged in the book to allow us to find the difference between two beacons
+we subtract one equation from the other.
+
+\[
+    2(a_j-a_i)x + 2(b_j-b_i)y + 2(c_j-b_i)z  = r_i^2 - r_j^2 - a_i^2 + a_j^2 - b_i^2 + b_j^2 - c_i^2 + c_j^2
 \]
 
 \[
-    2(a_k-a_i)x + 2(b_k-b_i)y = r_i^2 - r_k^2  - a_i^2 + a_k^2 - b_i^2  + b_k^2  .
+    2(a_k-a_i)x + 2(b_k-b_i)y + 2(c_k-b_i)z = r_i^2 - r_k^2  - a_i^2 + a_k^2 - b_i^2  + b_k^2 - c_i^2 + c_j^2
 \]
 
-%
-%\begin{figure}[ht]
-%\caption{Graphed path of Robot}
-%\centering
-%\includegraphics[scale=0.45]{img/P4a.png}
-%\end{figure}
+We repeat this for a third equation using $a_l$, $b_l$, and $c_l$ terms for 3 equations with 3 unknowns, allowing 
+us to solve this as a system of linear equations. When we perform this calculation in Matlab, we find that 
+the position of the robot sits at $(882.28, 444.15, 523.30)$ for position in $(x,y,z)$. Below you can find our Matlab
+code.
+
 
 \newpage
 \subsection*{Code for Problem 5}
@@ -177,13 +186,33 @@ $45\degree<\alpha<71.565\degree$ and $1.6\cot \alpha < u < -0.8(\cot \alpha - 3)
 maximum and minimum found for $\alpha$, which then defines $u$ along the range $0.53<u<2.1334$ cm.
 
 \newpage
-\section*{Problem 9.1}
+\section*{Problem 9.2}
 \subsection*{Problem statement}
-ssume you have two cameras that are calibrated into a stereo pair with a baseline of 10cm, and focal depth of 7mm. If the error is 10\% 
+Assume you have two cameras that are calibrated into a stereo pair with a baseline of 10cm, and focal depth of 7mm. If the error is 10\% 
 on $v_1$ and $v_2$, $v_1=2$mm and $v_2=3mm$, what is the error on the depth measurement $z$? Your answer shoudl be a percentage relative 
 to the error free number. Hint: If $v_1=2$ then a 10\% error ranges from 1.8 to 2.2 [Although not required, another way to approach this problem is the total differential from calculus.]
 
 \subsection*{Solution approach and algorithm description.}
 
+For this problem we begin with the equation for $z$ given th baseline and focal depth, as well as values for $v_1$ and $v_2$.
+
+\[
+    z = \frac{fb}{v_1+v_2}
+\]
+
+For $z = \frac{0.7*10}{0.2+0.3} = 14$cm is our exact answer. However, we want values for $v_1$ and $v_2$  $\pm$10\%. This range then 
+becomes $1.8\geq v_1 \geq 2.2$ and $2.7 \geq v_2 \geq 3.3$. For this, we wrote a simple python script 
+that uses a numpy arange, combines the two terms $v_1$ and $v_2$ and then searches the results for local 
+minima and maxima. Using this method, we found that the largest value for $z$ then becomes $12.7273 \geq z \geq 15.556$.
+
+However, our problem asks us to present this data as a percent error. Using the percentage error equation
+$\frac{|theoretical - experimental|}{|theoretical|} * 100\%$ with 14 as our theoretical value, the largest 
+percentage is the upper bound, giving us a total percent error of 11.1\%.
+
+\newpage
+\subsection*{Code for Problem 4}
+\begin{tiny}
+\lstinputlisting{../P4.py}
+\end{tiny}
 
 \end{document}
