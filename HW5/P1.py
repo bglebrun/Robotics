@@ -18,15 +18,13 @@ y = np.zeros(N)
 th = np.zeros(N)
 
 
-xpts = [0,1,2,3,4,5,4,3,2,1,0,0]
-ypts = [0,1,0,-1,0,1,2,3,3,2,1,0]
+xpts = [1,2,3,4,5,4,3,2,1,0,0]
+ypts = [1,0,-1,0,1,2,3,3,2,1,0]
 
-list_index = 1
+list_index = 0
 i= 0
 
-print(len(xpts))
 while(list_index<len(xpts) or list_index<len(ypts)):
-    print("working on", xpts[list_index],ypts[list_index])
     while (i < N-1):
         th_err = atan2(ypts[list_index] - y[i], xpts[list_index] - x[i]) - th[i]
         d1 = abs(x[i] - xpts[list_index])
